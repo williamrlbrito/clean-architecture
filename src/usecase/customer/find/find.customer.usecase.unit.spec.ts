@@ -1,6 +1,6 @@
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import Address from "../../../domain/customer/value-object/address";
-import FindCustomerUseCase from "./find.customer.usecase";
+import { FindCustomerUseCase } from "./find.customer.usecase";
 
 const customer = CustomerFactory.createWithAddress(
   "John Doe",

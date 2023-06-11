@@ -4,7 +4,7 @@ import {
   OutputFindCustomerDto,
 } from "./find.customer.dto";
 
-export default class FindCustomerUseCase {
+class FindCustomerUseCase {
   private customerRepository: CustomerRepositoryInterface;
 
   constructor(customerRepository: CustomerRepositoryInterface) {
@@ -26,3 +26,5 @@ export default class FindCustomerUseCase {
     };
   }
 }
+
+export { FindCustomerUseCase };
