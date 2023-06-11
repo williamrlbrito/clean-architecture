@@ -3,6 +3,7 @@ import CustomerModel from "../../../infrastructure/customer/repository/sequelize
 import CustomerRepository from "../../../infrastructure/customer/repository/sequelize/customer.repository";
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import Address from "../../../domain/customer/value-object/address";
+import FindCustomerUseCase from "./find.customer.usecase";
 
 describe("Test find customer use case", () => {
   let sequelize: Sequelize;
@@ -23,9 +24,9 @@ describe("Test find customer use case", () => {
     await sequelize.close();
   });
 
-  it("should find customer by id", async () => {
+  it("should find a customer", async () => {
     const customerRepository = new CustomerRepository();
-    const usecase = new FindCustomerUsecase(customerRepository);
+    const usecase = new FindCustomerUseCase(customerRepository);
 
     const customer = CustomerFactory.createWithAddress(
       "John Doe",
