@@ -1,5 +1,6 @@
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import Address from "../../../domain/customer/value-object/address";
+import { ListCustomerUseCase } from "./list.customer.usecase";
 
 const customerOne = CustomerFactory.createWithAddress(
   "John Doe",
@@ -14,11 +15,11 @@ const customerTwo = CustomerFactory.createWithAddress(
 const MockRepository = () => {
   return {
     find: jest.fn(),
-    findAll: jest.fn(),
-    create: jest.fn(),
-    update: jest
+    findAll: jest
       .fn()
       .mockReturnValue(Promise.resolve([customerOne, customerTwo])),
+    create: jest.fn(),
+    update: jest.fn(),
   };
 };
 
