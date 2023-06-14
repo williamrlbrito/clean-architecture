@@ -12,7 +12,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
     });
   }
 
-  async update(entity: Product): Promise<void> {
+  async update(entity: ProductInterface): Promise<void> {
     await ProductModel.update(
       {
         name: entity.name,
@@ -26,12 +26,24 @@ export default class ProductRepository implements ProductRepositoryInterface {
     );
   }
 
-  async find(id: string): Promise<Product> {
-    const productModel = await ProductModel.findOne({ where: { id } });
+  async find(id: string): Promise<ProductInterface> {
+    let productModel;
+
+    try {
+      productModel = await ProductModel.findOne({
+        where: {
+          id,
+        },
+        rejectOnEmpty: true,
+      });
+    } catch (error) {
+      throw new Error("Product not found");
+    }
+
     return new Product(productModel.id, productModel.name, productModel.price);
   }
 
-  async findAll(): Promise<Product[]> {
+  async findAll(): Promise<ProductInterface[]> {
     const productModels = await ProductModel.findAll();
     return productModels.map(
       (productModel) =>
