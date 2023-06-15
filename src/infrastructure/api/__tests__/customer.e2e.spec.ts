@@ -30,4 +30,12 @@ describe("E2E test for customer", () => {
     expect(response.body.address.zip).toBe("zip");
     expect(response.body.address.city).toBe("city");
   });
+
+  it("should return 500 when an error occurs", async () => {
+    const response = await request(app).post("/customers").send({
+      name: "John Doe",
+    });
+
+    expect(response.status).toBe(500);
+  });
 });
