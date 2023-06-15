@@ -2,7 +2,7 @@ import { app, sequelize } from "../express";
 import request from "supertest";
 
 describe("E2E test for customer", () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await sequelize.sync({ force: true });
   });
 
