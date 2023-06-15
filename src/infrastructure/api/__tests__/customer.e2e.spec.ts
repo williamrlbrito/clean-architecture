@@ -23,7 +23,11 @@ describe("E2E test for customer", () => {
         },
       });
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
     expect(response.body.name).toBe("John Doe");
+    expect(response.body.address.street).toBe("street");
+    expect(response.body.address.number).toBe(100);
+    expect(response.body.address.zip).toBe("zip");
+    expect(response.body.address.city).toBe("city");
   });
 });
