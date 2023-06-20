@@ -10,6 +10,10 @@ class Notification {
     this.errors.push(error);
   }
 
+  hasErrors(): boolean {
+    return this.errors.length > 0;
+  }
+
   messages(context?: string): string {
     if (context) {
       return this.errors
