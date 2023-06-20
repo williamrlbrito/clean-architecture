@@ -1,5 +1,6 @@
 import { Entity } from "../../@shared/entity/entity.abstract";
 import EventDispatcher from "../../@shared/event/event-dispatcher";
+import { NotificationError } from "../../@shared/notification/notification.error";
 import CustomerChangeAddressEvent from "../event/customer-change-address.event";
 import SendConsoleLogHandler from "../event/handler/send-console-log.handler";
 import Address from "../value-object/address";
@@ -17,7 +18,7 @@ export default class Customer extends Entity {
     this.validate();
 
     if (this.notification.hasErrors()) {
-      throw new Error(this.notification.messages());
+      throw new NotificationError(this.notification.getErrors());
     }
   }
 
